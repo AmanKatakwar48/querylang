@@ -441,35 +441,12 @@ Condition Type Checked : BOOLEAN (Valid operator & operand types)
 
 ---
 
-## Chapter 9: Review 2 Viva Voce Preparation Guide
+## Chapter 9: Conclusion & Phase 3 Roadmap
 
-To ensure high marks in **Individual Understanding (3 Marks)**, the following key theoretical and practical questions are addressed:
-
-### Q1: Why did you choose a Recursive-Descent Parser over a tool like Lex/Yacc or ANTLR?
-**Answer:** While parser generators produce valid parsers, writing a recursive-descent parser by hand demonstrates deep understanding of context-free grammar transformations, LL(1) predictive parsing tables, and operator precedence resolution. Additionally, a hand-written parser provides custom syntax error recovery and diagnostic pointers directly tailored to QueryLang.
-
-### Q2: How does QueryLang represent the Symbol Table, and what is stored in it?
-**Answer:** In QueryLang, the Symbol Table is implemented as the `SchemaCatalog`. In general programming languages, symbol tables map variable names to types and memory offsets. In QueryLang, the symbol table maps table identifiers to their schemas, which in turn map column identifiers to their declared data types (`INTEGER`, `FLOAT`, `STRING`, `BOOLEAN`) and descriptions.
-
-### Q3: What is the difference between Syntax Errors and Semantic Errors in QueryLang?
-**Answer:** 
-- A **Syntax Error** violates the grammar structure of the language (e.g., `SELECT FROM students;` is missing a column list, which violates the production `query ::= SELECT column_list FROM table...`).
-- A **Semantic Error** satisfies the grammar perfectly, but violates static meaning or typing rules (e.g., `SELECT salary FROM students;` is grammatically valid, but column `salary` does not exist in the symbol table; similarly, `WHERE name > 50` is grammatically valid, but ordering `>` is illegal between `STRING` and `INTEGER`).
-
-### Q4: What is the Intermediate Representation (IR) in QueryLang?
-**Answer:** The IR is a tree of Relational Algebra operators (`ScanNode`, `FilterNode`, `ProjectNode`, `SortNode`, `LimitNode`). Translating the AST into an IR decouples query syntax from execution and provides an intermediate language structure that can be optimized in Phase 3 via algebraic rewrites (e.g., filter pushdown and constant folding).
-
-### Q5: How are line and column numbers tracked during Lexical Analysis?
-**Answer:** The Lexer maintains a `pos` index and a `line_start` offset. Whenever a newline character `\n` is matched in whitespace, the line counter increments and `line_start` updates to the character position immediately following the newline. The column number is computed deterministically as `column = match.start() - line_start + 1`.
-
----
-
-## Chapter 10: Conclusion & Phase 3 Roadmap
-
-### 10.1 Review 2 Achievements
+### 9.1 Review 2 Achievements
 Phase 2 / Review 2 has completed all core functional modules of QueryLang. The system is no longer a concept or isolated lexer; it is a **fully working compiler pipeline** executing queries, validating schemas, enforcing type safety, generating relational plans, and producing formatted results.
 
-### 10.2 Phase 3 Roadmap (Final Review)
+### 9.2 Phase 3 Roadmap (Final Review)
 As planned in the Master Roadmap (PDF 4):
 1. **Module 1: Query Optimizer** — Implementation of rule-based algebraic rewrites:
    - *Filter Pushdown:* $\pi(\sigma(R)) \Longrightarrow \sigma(\pi(R))$
