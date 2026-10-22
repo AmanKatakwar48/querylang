@@ -1,12 +1,5 @@
 # QueryLang: A Compiler-Style Query Processing Engine
-
-**Course:** BCSE307P – Compiler Design Laboratory  
-**Academic Year:** 2026–27  
-**Student Name:** Aman Katakwar  
-**Registration Number:** 24BCE0160  
 **Faculty Guide:** Prof. Ranjithkumar S  
-**Milestone:** Phase 2 / Review 2 – Core Implementation  
-
 ---
 
 ## 1. Project Overview
