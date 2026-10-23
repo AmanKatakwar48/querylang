@@ -1,0 +1,19 @@
+digraph QueryLang_AST {
+    rankdir=TB;
+    node [fontname="Helvetica", fontsize=11, shape=box, style="filled,rounded", margin="0.2,0.1"];
+    edge [fontname="Helvetica", fontsize=9, color="#555555"];
+
+    node_0 [label="SELECT QUERY", fillcolor="#D0E1FD", color="#2A62D7", penwidth=2];
+    node_1 [label="TABLE\n[students]", fillcolor="#D1FADF", color="#12B76A"];
+    node_0 -> node_1 [label="FROM"];
+    node_2 [label="COLUMN\nname", fillcolor="#F2F4F7", color="#667085"];
+    node_0 -> node_2 [label="PROJECT"];
+    node_3 [label="COLUMN\nbranch", fillcolor="#F2F4F7", color="#667085"];
+    node_0 -> node_3 [label="PROJECT"];
+    node_4 [label="OP [>=]", fillcolor="#E0EAFF", color="#444CE7"];
+    node_5 [label="COLUMN\nage", fillcolor="#F2F4F7", color="#667085"];
+    node_6 [label="LITERAL (INTEGER)\n20", fillcolor="#EAECF0", color="#98A2B3"];
+    node_4 -> node_5 [label="left"];
+    node_4 -> node_6 [label="right"];
+    node_0 -> node_4 [label="WHERE"];
+}
